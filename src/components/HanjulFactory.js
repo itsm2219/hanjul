@@ -7,8 +7,14 @@ import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 const HanjulFactory = ({ userObj }) => {
   const [hanjul, setHanjul] = useState("");
 
+  const [hanjuls, setHanjuls] = useState([]);
+  const [hashtags, setHashtags] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
   const onSubmit = async (event) => {
     event.preventDefault();
+    const hashtags =hanjul.split(" ").filter(word => word.startsWith('#'));
+
 
     if (hanjul === "") {
       return;
@@ -19,6 +25,7 @@ const HanjulFactory = ({ userObj }) => {
         const hanjulObj = await addDoc(collection(dbService, "hanjuls"), {
             text: hanjul, createdAt: Date.now(),
             creatorId: userObj.uid,
+            hashtags: hashtags,
         });
         await addDoc(collection(dbService,"hanjuls"), hanjulObj);
         console.log("Document written with ID:", hanjulObj.id);
@@ -35,6 +42,15 @@ const onChange = (event) => {
     } = event;
     setHanjul(value);
 };
+
+
+
+const onSearch = (event) => {
+  event.preventDefault();
+  setSearchTerm(event.target.value);
+}
+
+const filteredHanjuls = hanjuls.filter(hanjul => hanjul.hashtags && hanjul.hashtags.includes(searchTerm));
 
 
   return (
