@@ -6,6 +6,7 @@ import Profile from '../routes/Profile';
 import HotPost from "../routes/HotPost";
 import Recommend from "../routes/Recommend";
 import Navigation from './Navigation';
+import MyPage from "routes/MyPage";
 
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
@@ -26,6 +27,9 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                 <>
                 <Route path="/" element={<Home userObj={userObj} />} />
                 <Route path="/profile" element={<Profile userObj={userObj} refreshUser={refreshUser} />} />
+                <Route path="/mypage" element={<MyPage userObj={userObj} refreshUser={refreshUser} />} />
+                <Route path="/hotpost" element={<HotPost userObj={userObj} refreshUser={refreshUser} />} />
+                <Route path="/recommend" element={<Recommend userObj={userObj} refreshUser={refreshUser} />} />
                 </>
                 ) : (
                 <>

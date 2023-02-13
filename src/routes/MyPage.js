@@ -9,9 +9,11 @@ import Hanjul from 'components/Hanjul';
 import { onSnapshot } from '@firebase/firestore';
 import { faCog, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import HanjulFactory from 'components/HanjulFactory';
+import Profile from './Profile';
 
 
-const Profile = ({userObj}) => {
+const MyPage = ({userObj}) => {
 
     const [myHanjuls, setMyHanjuls] = useState([]);
 
@@ -64,28 +66,25 @@ const Profile = ({userObj}) => {
      return (
       <div className="container">
 
-      <form onSubmit={onSubmit} className="profileForm">
-            <input onChange={onChange} type="text" placholder="Display name" value={newDisplayName} autoFocus className="formInput" />
-            <input
-          type="submit"
-          value="Update Profile"
-          className="formBtn"
-          style={{
-            marginTop: 10,
-          }}
-          />
-        </form>
-        <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
-        Log Out
-      </span>
+        <nav>
+          <ul style={{ display: "flex", justifyContent: "right", marginTop: 10 }}>
+            <li>
+            <Link to="/profile">
+              <FontAwesomeIcon icon={faCog} color={"#00ff66"} size="2x" />
+            </Link>
+            </li>
+          </ul>
+        </nav>
 
-
-
-
+        <div style={{ marginTop: 30 }}>
+                {myHanjuls.map((hanjul)=>(
+                <Hanjul key={hanjul.id} hanjulObj={hanjul} isOwner={hanjul.creatorId === userObj.uid} />
+                ))}
+            </div>
         </div>
      )
 
 
 };
 
-export default Profile;
+export default MyPage;
