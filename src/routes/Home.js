@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { UNSAFE_enhanceManualRouteObjects } from 'react-router-dom';
 import Hanjul from '../components/Hanjul'
 import HanjulFactory from 'components/HanjulFactory';
+import { Hashtags } from 'Styles/HanjulListStyles';
+
 
 
 const Home = ({ userObj }) => {
@@ -14,8 +16,8 @@ const Home = ({ userObj }) => {
 
     const [hashtags, setHashtags] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-  
 
+  
     useEffect(() => {
     
         onSnapshot(collection(dbService, "hanjuls"), (snapshot) => {
@@ -40,7 +42,7 @@ const Home = ({ userObj }) => {
       }
     
       const filteredHanjuls = hanjuls.filter(hanjul => hanjul.hashtags && hanjul.hashtags.includes(searchTerm));
-    
+
 
       return (
         <div className="container">          
@@ -50,24 +52,16 @@ const Home = ({ userObj }) => {
         <button type="submit">검색</button>
       </form>
 
-      <form onSubmit={(e)=>{filteredHanjuls(e)}}>
-      <input value={searchTerm} onChange={(e)=>{setSearchTerm(e.target.value)}} type="hashtags" placeholder="Search hashtags"/>
-      <button type="submit">검색</button>
-    </form>
-    <div>
-      {filteredHanjuls.map((hanjul) => (
-        <Hanjul key={hanjul.id} hanjulObj={hanjul} isOwner={hanjul.creatorId === userObj.uid} hashtags={hashtags}/>
-      ))}
-    </div>
 
 
 
 
             <HanjulFactory userObj={userObj} />
-            <div style={{ marginTop: 30 }}>
+            <div style={{ marginTop: 70 }}>
                 {hanjuls.map((hanjul)=>(
                 <Hanjul key={hanjul.id} hanjulObj={hanjul} isOwner={hanjul.creatorId === userObj.uid} hashtags={hashtags} />
                 ))}
+
             </div>
         </div>
     );

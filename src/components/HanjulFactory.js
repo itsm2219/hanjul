@@ -4,6 +4,8 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
+import Hashtag from './Hashtag';
+
 const HanjulFactory = ({ userObj }) => {
   const [hanjul, setHanjul] = useState("");
 
@@ -11,9 +13,11 @@ const HanjulFactory = ({ userObj }) => {
   const [hashtags, setHashtags] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [hashDefault, setHashDefault] = useState(false);
+
   const onSubmit = async (event) => {
     event.preventDefault();
-    const hashtags =hanjul.split(" ").filter(word => word.startsWith('#'));
+   // const hashtags =hanjul.split(" ").filter(word => word.startsWith('#'));
 
 
     if (hanjul === "") {
@@ -50,7 +54,7 @@ const onSearch = (event) => {
   setSearchTerm(event.target.value);
 }
 
-const filteredHanjuls = hanjuls.filter(hanjul => hanjul.hashtags && hanjul.hashtags.includes(searchTerm));
+//const filteredHanjuls = hanjuls.filter(hanjul => hanjul.hashtags && hanjul.hashtags.includes(searchTerm));
 
 
   return (
@@ -59,7 +63,14 @@ const filteredHanjuls = hanjuls.filter(hanjul => hanjul.hashtags && hanjul.hasht
     <input className="factoryInput__input" value={hanjul} onChange={onChange} type="text" placeholder="오늘의 한 줄을 입력하세요" maxLength={200} />
     <input type="submit" value="&rarr;" className="factoryInput__arrow"  />
     </div>
+    <Hashtag
+    selectedHashtagArray={hashtags}
+    setHashtagsArray={setHashtags}
+    hashDefault={hashDefault}
+    setHashDefault={setHashDefault}
+  />
     </form>
+ 
   );
 };
 
