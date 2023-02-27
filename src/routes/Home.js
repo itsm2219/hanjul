@@ -52,11 +52,6 @@ const Home = ({ userObj }) => {
         <button type="submit">검색</button>
       </form>
 
-
-
-
-
-            <HanjulFactory userObj={userObj} />
             <div style={{ marginTop: 70 }}>
                 {hanjuls.map((hanjul)=>(
                 <Hanjul key={hanjul.id} hanjulObj={hanjul} isOwner={hanjul.creatorId === userObj.uid} hashtags={hashtags} />
