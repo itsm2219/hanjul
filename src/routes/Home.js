@@ -63,6 +63,7 @@ const Home = ({ userObj }) => {
                 ))}
 
             </div>
+
         </div>
     );
 };

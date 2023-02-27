@@ -1,13 +1,17 @@
-import { dbService } from "../fBase";
+import { authService, dbService } from "../fBase";
 import React, { useState } from "react";
-import { doc, deleteDoc, updateDoc } from "firebase/firestore";
+import { doc, deleteDoc, updateDoc, collection, getDoc } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import styled from 'styled-components';
+
+import Hashtag from "./Hashtag";
 
 const Hanjul = ({ hanjulObj, isOwner }) => {
     const [editing, setEditing] = useState(false);
     const [newHanjul, setNewHanjul] = useState(hanjulObj.text);
     const HanjulTextRef = doc(dbService, "hanjuls", `${hanjulObj.id}`);
+
     const onDeleteClick = async () => {
         const ok = window.confirm("정말 지우시겠습니까?");
         console.log(ok);
@@ -28,6 +32,18 @@ const Hanjul = ({ hanjulObj, isOwner }) => {
         setNewHanjul(value);
 
     };
+    const Hashtags = styled.div`
+    width: 280px;
+    height: 20px;
+    line-height: 200%;
+    font-size: 11px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #ef9a9a;
+    color: #fff;
+  `;
+  
 
 
     return (
@@ -47,6 +63,8 @@ const Hanjul = ({ hanjulObj, isOwner }) => {
                 ) : (
                     <>
                         <h4>{hanjulObj.text}</h4>
+                        <Hashtags>{hanjulObj.hashtags}</Hashtags>
+                
                         {isOwner && (
                             
             <div className="hanjul__actions">

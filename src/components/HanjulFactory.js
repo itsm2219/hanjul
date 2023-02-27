@@ -30,6 +30,9 @@ const HanjulFactory = ({ userObj }) => {
             text: hanjul, createdAt: Date.now(),
             creatorId: userObj.uid,
             hashtags: hashtags,
+            
+            likes: [],
+            likeCount:0
         });
         await addDoc(collection(dbService,"hanjuls"), hanjulObj);
         console.log("Document written with ID:", hanjulObj.id);
