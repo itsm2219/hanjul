@@ -1,4 +1,16 @@
 import React from 'react';
+import HanjulFactory from 'components/HanjulFactory';
 
-const Recommend= () => <span>Recommend</span>;
-export default Recommend;
+//const Recommend= () => <span>Recommend</span>;
+
+const Recommend = ({ userObj }) => {
+
+  return (
+    <div className="container">          
+  
+        <HanjulFactory userObj={userObj} />
+  
+    </div>
+  );
+  };
+  export default Recommend;

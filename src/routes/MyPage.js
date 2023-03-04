@@ -20,7 +20,7 @@ const MyPage = ({userObj}) => {
     useEffect(() => {
     
         onSnapshot(
-          query(collection(dbService, "hanjuls"), where("creatorId","==",userObj.uid)), 
+          query(collection(dbService, "hanjuls"), where("creatorId","==",userObj.uid), orderBy("createdAt","desc")), 
           (snapshot) => {
           const hanjulArray = snapshot.docs.map((doc) => ({
             id: doc.id, 

@@ -1,5 +1,5 @@
-import { dbService } from '../fBase';
-import { addDoc, collection, onSnapshot, query, getDocs } from "firebase/firestore";
+import { authService, dbService } from '../fBase';
+import {  doc, updateDoc, addDoc, collection, onSnapshot, query, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from 'react';
 import { UNSAFE_enhanceManualRouteObjects } from 'react-router-dom';
 import Hanjul from '../components/Hanjul'
@@ -9,6 +9,7 @@ import { Hashtags } from 'Styles/HanjulListStyles';
 
 
 const Home = ({ userObj }) => {
+
 
     const [hanjuls, setHanjuls] = useState([]);
 
