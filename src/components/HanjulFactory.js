@@ -1,12 +1,13 @@
 import { dbService } from "fBase";
 import { addDoc, collection } from "firebase/firestore";
-import { useState } from "react";
+import {  useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import Hashtag from './Hashtag';
 
-const HanjulFactory = ({ userObj }) => {
+
+const HanjulFactory = ({   hashtag, timestamp,filterLists, userObj }) => {
   const [hanjul, setHanjul] = useState("");
 
   const [hanjuls, setHanjuls] = useState([]);

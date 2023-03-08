@@ -50,7 +50,7 @@ const Home = ({ userObj }) => {
 
       <form onSubmit={(e)=>{searchHanjul(e)}}>
         <input className="factoryInput__input" onChange={(e)=>{setSearch(e.target.value)}} placeholder="한줄을 검색하세요" />
-        <button type="submit">검색</button>
+        <button type="submit" >검색</button>
       </form>
 
             <div style={{ marginTop: 70 }}>

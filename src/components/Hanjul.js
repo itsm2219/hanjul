@@ -2,7 +2,8 @@ import { authService, dbService } from "../fBase";
 import React, { useState } from "react";
 import { doc, deleteDoc, updateDoc, collection, getDoc } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPencilAlt, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as FaHeartRegular } from "@fortawesome/free-regular-svg-icons";
 import styled from 'styled-components';
 import Home from "routes/Home";
 
@@ -56,22 +57,22 @@ const Hanjul = ({ hanjulObj, isOwner }) => {
     background-color: #ef9a9a;
     color: #fff;
   `;
-  
+  const CheckBox = styled.div`
+  width: 280px;
+  height: 20px;
+  line-height: 20px;
+  background-color: ${(props) => (props.selected ? '#c62828' : '#fff')};
+  color: ${(props) => (props.selected ? '#fff' : '#c62828')};
+  font-size: 12px;
+  border: 1px solid #c62828;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+`;
 
     //좋아요 함수
-    const handleLike = async (hanjulObj) => {
-        //클릭에 따라 하트 색 바꿔주는 부분
-        const newLikeStatus = { ...hanjulObj };
-        if (!newLikeStatus.liked) {
-            newLikeStatus.liked = true;
-            newLikeStatus.likeCount++;
-        } else {
-            newLikeStatus.liked = false;
-            newLikeStatus.likeCount--;
-        }
-        setLikeStatus(newLikeStatus);
-
-        const hanjulRef = doc(dbService, "hanjuls", `${newLikeStatus.id}`);
+    const handleLike = async () => {
+        const hanjulRef = doc(dbService, "hanjuls", hanjulObj.id);
         const hanjulDoc = await getDoc(hanjulRef);
 
         //likes필드에 id가 존재한다면 id삭제 후 likeCount - 1 해줌. 존재하지 않으면 그 반대.
@@ -79,20 +80,35 @@ const Hanjul = ({ hanjulObj, isOwner }) => {
             const likes = hanjulDoc.data().likes || [];
             const likeCount = hanjulDoc.data().likeCount || 0;
             if (likes.includes(userId)) {
+
+                setLikeStatus({
+                    ...likeStatus,
+                    liked: false,
+                    likeCount: likeCount - 1
+                });
                 // remove the like if the user has already liked it
                 await updateDoc(hanjulRef, {
                     likes: likes.filter(like => like !== userId),
-                    likeCount: likeCount -1
+                    likeCount: likeCount - 1
                 });
             } else {
                 // add the like if the user hasn't liked it yet
+                setLikeStatus({
+                    ...likeStatus,
+                    liked: true,
+                    likeCount: likeCount + 1
+                });
+
                 await updateDoc(hanjulRef, {
                     likes: [...likes, userId],
-                    likeCount: likeCount +1
+                    likeCount: likeCount + 1
                 });
             }
         }
-    }
+    };
+      
+
+    
 
     return (
         <div className="hanjul">
@@ -111,10 +127,17 @@ const Hanjul = ({ hanjulObj, isOwner }) => {
                 ) : (
                     <>
                         <h4>{hanjulObj.text}</h4>
-                        <Hashtags>{hanjulObj.hashtags}</Hashtags>
-                        <p>Likes:{hanjulObj.likeCount}</p>
+
+                        <CheckBox name='hashtag' >
+                        {hanjulObj.hashtags}
+                        </CheckBox>
+
                         <div>
-                            {!isOwner && <button onClick={() => {handleLike(hanjulObj)}}>{likeStatus.liked ? "❤️" : "🤍"} {likeStatus.likeCount}</button>}
+                            {!isOwner && <button onClick={() => {handleLike(hanjulObj)}}>{likeStatus.liked ? (
+            <FontAwesomeIcon icon={faHeart} />
+          ) : (
+            <FontAwesomeIcon icon={FaHeartRegular} />
+          )} {likeStatus.likeCount}</button>}
                         </div>
                 
                         {isOwner && (

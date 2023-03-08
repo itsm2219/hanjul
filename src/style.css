@@ -100,7 +100,7 @@ form {
   flex-wrap: wrap;
   position: relative;
   margin-bottom: 20px;
-  width: 100%;
+  width: 90%;
 }
 
 .factoryInput__input {
@@ -112,6 +112,7 @@ form {
   border-radius: 20px;
   font-weight: 500;
   font-size: 12px;
+  width: 80%;
 }
 
 .factoryInput__arrow {

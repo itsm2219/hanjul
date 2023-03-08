@@ -1,19 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+const HASHTAGS1 = [
+  ['나', 100],
+  ['가족', 101],
+  ['친구', 102],
+  ['연인', 103],
+  ['동료', 104],
+  ['고양이', 105],
+  ['강아지', 106],
+  ['스승', 107],
+  ['제자', 108],
+  ['자식', 109],
+  ['자연', 110],
+  ['시간', 111],
+
+];
+
 const HASHTAGS = [
-  ['#기쁨', 100],
-  ['#슬픔', 101],
-  ['#화남', 102],
-  ['#우울', 103],
-  ['#즐거움', 104],
-  ['#감동', 105],
-  ['#무기력', 106],
-  ['#분노', 107],
-  ['#희망', 108],
-  ['#걱정', 109],
-  ['#기대', 110],
-  ['#외로움', 111],
+  ['기쁨', 100],
+  ['슬픔', 101],
+  ['화남', 102],
+  ['우울', 103],
+  ['즐거움', 104],
+  ['감동', 105],
+  ['무기력', 106],
+  ['분노', 107],
+  ['희망', 108],
+  ['걱정', 109],
+  ['기대', 110],
+  ['외로움', 111],
+
+];
+
+const HASHTAGS3 = [
+  ['인사', 100],
+  ['칭찬', 101],
+  ['위로', 102],
+  ['응원', 103],
+  ['명절', 104],
+  ['축하', 105],
+  ['이별', 106],
+  ['졸업', 107],
+  ['취업', 108],
+  ['연말', 109],
+  ['생일', 110],
+  ['면접', 111],
 
 ];
 
@@ -72,7 +104,7 @@ const HashtagButton = ({ tag, selectHashtag, hashDefault }) => {
 
   return (
     <CheckBox name='hashtag' selected={selected} onClick={onHandleClick}>
-      {tag}
+      #{tag}
     </CheckBox>
   );
 };
@@ -100,9 +132,37 @@ const Hashtag = ({
 
   return (
     <Container>
+      <Span>#대상을 고르시오</Span>
+      <CheckBoxContainer>
+        {HASHTAGS1.map(([tag, id]) => (
+          <HashtagButton
+            key={id}
+            tag={tag}
+            selectHashtag={selectHashtag}
+            hashDefault={hashDefault}
+          />
+        ))}
+      </CheckBoxContainer>
+      <br/>
+      <br/>
+      <br/>
       <Span>#감정을 고르시오</Span>
       <CheckBoxContainer>
         {HASHTAGS.map(([tag, id]) => (
+          <HashtagButton
+            key={id}
+            tag={tag}
+            selectHashtag={selectHashtag}
+            hashDefault={hashDefault}
+          />
+        ))}
+      </CheckBoxContainer>
+      <br/>
+      <br/>
+      <br/>
+      <Span>#상황을 고르시오</Span>
+      <CheckBoxContainer>
+        {HASHTAGS3.map(([tag, id]) => (
           <HashtagButton
             key={id}
             tag={tag}
