@@ -63,6 +63,17 @@ const MyPage = ({userObj}) => {
         }
     };
 
+    const timeChanger = (time) => {
+      const dateObj = new Date(time);
+      let dateStr = `${dateObj.getFullYear()}년 ${
+        dateObj.getMonth() + 1
+      }월 ${dateObj.getDate()}일 작성`;
+  
+      return dateStr;
+    };
+
+ 
+
      return (
       <div className="container">
 
@@ -70,15 +81,15 @@ const MyPage = ({userObj}) => {
           <ul style={{ display: "flex", justifyContent: "right", marginTop: 10 }}>
             <li>
             <Link to="/profile">
-              <FontAwesomeIcon icon={faCog} color={"#00ff66"} size="2x" />
+              <FontAwesomeIcon icon={faCog} color={"#ff9d00"} size="2x" />
             </Link>
             </li>
           </ul>
         </nav>
 
         <div style={{ marginTop: 30 }}>
-                {myHanjuls.map((hanjul)=>(
-                <Hanjul key={hanjul.id} hanjulObj={hanjul} isOwner={hanjul.creatorId === userObj.uid} />
+                {myHanjuls.map((hanjul,{timestamp})=>(
+                <Hanjul key={hanjul.id} hanjulObj={hanjul} isOwner={hanjul.creatorId === userObj.uid} >{timeChanger(timestamp)}</Hanjul>
                 ))}
             </div>
         </div>

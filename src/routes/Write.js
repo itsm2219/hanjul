@@ -1,9 +1,9 @@
 import React from 'react';
 import HanjulFactory from 'components/HanjulFactory';
 
-//const Recommend= () => <span>Recommend</span>;
+//const Writeend= () => <span>Writeend</span>;
 
-const Recommend = ({ userObj }) => {
+const Write = ({ userObj }) => {
 
   return (
     <div className="container">          
@@ -13,4 +13,4 @@ const Recommend = ({ userObj }) => {
     </div>
   );
   };
-  export default Recommend;
+  export default Write;

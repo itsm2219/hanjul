@@ -1,21 +1,25 @@
 import { authService, dbService } from "../fBase";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { doc, deleteDoc, updateDoc, collection, getDoc } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as FaHeartRegular } from "@fortawesome/free-regular-svg-icons";
 import styled from 'styled-components';
 import Home from "routes/Home";
+import moment from "moment";
+import Moment from 'react-moment';
 
 import Hashtag from "./Hashtag";
 import HanjulFactory from "./HanjulFactory";
 
-const Hanjul = ({ hanjulObj, isOwner }) => {
+const Hanjul = ({ hanjulObj, isOwner, currentUserId, timestamp, route}) => {
     const [editing, setEditing] = useState(false);
+    const userId = authService.currentUser.uid;
+
 
 
     const [likeStatus, setLikeStatus] = useState({
-        liked: hanjulObj.likes,
+        liked: hanjulObj.likes.includes(currentUserId),
         likeCount: hanjulObj.likeCount
     });
 
@@ -23,8 +27,10 @@ const Hanjul = ({ hanjulObj, isOwner }) => {
     const [newHanjul, setNewHanjul] = useState(hanjulObj.text);
     const HanjulTextRef = doc(dbService, "hanjuls", `${hanjulObj.id}`);
 
+   
+  
 
-    const userId = authService.currentUser.uid;
+
 
     const onDeleteClick = async () => {
         const ok = window.confirm("정말 지우시겠습니까?");
@@ -61,10 +67,10 @@ const Hanjul = ({ hanjulObj, isOwner }) => {
   width: 280px;
   height: 20px;
   line-height: 20px;
-  background-color: ${(props) => (props.selected ? '#c62828' : '#fff')};
-  color: ${(props) => (props.selected ? '#fff' : '#c62828')};
+  background-color: ${(props) => (props.selected ? '#ed8c15' : '#fff')};
+  color: ${(props) => (props.selected ? '#fff' : '#ed8c15')};
   font-size: 12px;
-  border: 1px solid #c62828;
+  border: 1px solid #ed8c15;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
@@ -107,8 +113,27 @@ const Hanjul = ({ hanjulObj, isOwner }) => {
         }
     };
       
-
+    const timeChanger = (time) => {
+        const dateObj = new Date(time);
+        let dateStr = `${dateObj.getFullYear()}년 ${
+          dateObj.getMonth() + 1
+        }월 ${dateObj.getDate()}일 작성`;
     
+        return dateStr;
+      };
+      const displayCreatedAt = (createdAt) => {
+        let startTime = new Date(createdAt);
+        let nowTime = Date.now();
+        if (parseInt(startTime - nowTime) > -60000) {
+          return <p format="방금 전">{startTime}</p>;
+        }
+        if (parseInt(startTime - nowTime) < -86400000) {
+          return <p format="MMM D일">{startTime}</p>;
+        }
+        if (parseInt(startTime - nowTime) > -86400000) {
+          return <p fromNow>{startTime}</p>;
+        }
+      };
 
     return (
         <div className="hanjul">
@@ -126,15 +151,21 @@ const Hanjul = ({ hanjulObj, isOwner }) => {
 
                 ) : (
                     <>
-                        <h4>{hanjulObj.text}</h4>
+                        <h4 style={{ display: "flex", justifyContent: "center", marginTop: 15 }}>{hanjulObj.text}</h4>
 
-                        <CheckBox name='hashtag' >
+                        <CheckBox name='hashtag' style={{ display: "flex", justifyContent: "center", marginTop: 3 }} >
                         {hanjulObj.hashtags}
-                        </CheckBox>
+                        </CheckBox> 
+                        
+                        <br/>
+                        <Moment format="YYYY/MM/DD HH:mm 작성">{hanjulObj.createdAt}</Moment>
+                        
+                        
 
-                        <div>
+                        <div style={{ display: "flex", justifyContent: "right", marginTop: 3 }}>
+                            {}
                             {!isOwner && <button onClick={() => {handleLike(hanjulObj)}}>{likeStatus.liked ? (
-            <FontAwesomeIcon icon={faHeart} />
+            <FontAwesomeIcon icon={faHeart} color='orange' />
           ) : (
             <FontAwesomeIcon icon={FaHeartRegular} />
           )} {likeStatus.likeCount}</button>}

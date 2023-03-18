@@ -4,9 +4,12 @@ import Auth from '../routes/Auth';
 import Home from '../routes/Home';
 import Profile from '../routes/Profile';
 import HotPost from "../routes/HotPost";
-import Recommend from "../routes/Recommend";
+//import Recommend from "../routes/Recommend";
 import Navigation from './Navigation';
 import MyPage from "routes/MyPage";
+import Write from "routes/Write";
+
+import SearchHash from "routes/SearchHash";
 
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
@@ -29,7 +32,9 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                 <Route path="/profile" element={<Profile userObj={userObj} refreshUser={refreshUser} />} />
                 <Route path="/mypage" element={<MyPage userObj={userObj} refreshUser={refreshUser} />} />
                 <Route path="/hotpost" element={<HotPost userObj={userObj} refreshUser={refreshUser} />} />
-                <Route path="/recommend" element={<Recommend userObj={userObj} refreshUser={refreshUser} />} />
+
+                <Route path="/write" element={<Write userObj={userObj} refreshUser={refreshUser} />} />
+                <Route path="/searchhash" element={<SearchHash userObj={userObj} refreshUser={refreshUser} />} />
                 </>
                 ) : (
                 <>

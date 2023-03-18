@@ -3,11 +3,16 @@ import { addDoc, collection } from "firebase/firestore";
 import {  useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import moment from "moment";
 
 import Hashtag from './Hashtag';
+import Hanjul from "./Hanjul";
 
 
-const HanjulFactory = ({   hashtag, timestamp,filterLists, userObj }) => {
+const HanjulFactory = ({  hashtag, timestamp,filterLists, userObj }) => {
+
+  
+
   const [hanjul, setHanjul] = useState("");
 
   const [hanjuls, setHanjuls] = useState([]);
@@ -15,6 +20,7 @@ const HanjulFactory = ({   hashtag, timestamp,filterLists, userObj }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [hashDefault, setHashDefault] = useState(false);
+  
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -28,12 +34,17 @@ const HanjulFactory = ({   hashtag, timestamp,filterLists, userObj }) => {
 
     try {
         const hanjulObj = await addDoc(collection(dbService, "hanjuls"), {
-            text: hanjul, createdAt: Date.now(),
+            text: hanjul,
             creatorId: userObj.uid,
             hashtags: hashtags,
             
+           createdAt: Date.now(),
+
             likes: [],
             likeCount:0
+            
+
+          
         });
         await addDoc(collection(dbService,"hanjuls"), hanjulObj);
         console.log("Document written with ID:", hanjulObj.id);
@@ -74,7 +85,6 @@ const onSearch = (event) => {
     setHashDefault={setHashDefault}
   />
     </form>
- 
   );
 };
 

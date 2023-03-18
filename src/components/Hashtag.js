@@ -17,7 +17,7 @@ const HASHTAGS1 = [
 
 ];
 
-const HASHTAGS = [
+const HASHTAGS2 = [
   ['기쁨', 100],
   ['슬픔', 101],
   ['화남', 102],
@@ -81,10 +81,10 @@ const CheckBox = styled.div`
   width: 60px;
   height: 20px;
   line-height: 20px;
-  background-color: ${(props) => (props.selected ? '#c62828' : '#fff')};
-  color: ${(props) => (props.selected ? '#fff' : '#c62828')};
+  background-color: ${(props) => (props.selected ? '#ed8c15' : '#fff')};
+  color: ${(props) => (props.selected ? '#fff' : '#ed8c15')};
   font-size: 12px;
-  border: 1px solid #c62828;
+  border: 1px solid #ed8c15;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
@@ -148,7 +148,7 @@ const Hashtag = ({
       <br/>
       <Span>#감정을 고르시오</Span>
       <CheckBoxContainer>
-        {HASHTAGS.map(([tag, id]) => (
+        {HASHTAGS2.map(([tag, id]) => (
           <HashtagButton
             key={id}
             tag={tag}
