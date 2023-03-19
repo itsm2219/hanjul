@@ -85,7 +85,7 @@ const SearchHash = ({ userObj, timestamp }) => {
     setHashDefault={setHashDefault} />
     </form>
 
-              <div style={{ marginTop: 3, marginBottom: 70 }}>
+              <div style={{ marginTop: 3, marginBottom: 200 }}>
                   {hashHanjuls.map((hanjul, {timestamp})=>(
                   <Hanjul 
                   key={hanjul.id} 
