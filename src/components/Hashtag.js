@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import SearchHash from 'routes/SearchHash';
 
 const HASHTAGS1 = [
   ['나', 100],
