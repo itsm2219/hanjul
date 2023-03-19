@@ -12,6 +12,7 @@ import Write from "routes/Write";
 import SearchHash from "routes/SearchHash";
 
 
+
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
     return (
         <Router> {isLoggedIn && <Navigation userObj={userObj} />}
@@ -35,6 +36,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
 
                 <Route path="/write" element={<Write userObj={userObj} refreshUser={refreshUser} />} />
                 <Route path="/searchhash" element={<SearchHash userObj={userObj} refreshUser={refreshUser} />} />
+ 
                 </>
                 ) : (
                 <>

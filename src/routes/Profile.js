@@ -71,11 +71,11 @@ const Profile = ({userObj}) => {
           value="Update Profile"
           className="formBtn"
           style={{
-            marginTop: 10,
+            marginTop: 10
           }}
           />
         </form>
-        <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
+        <span className="formBtn cancelBtn logOut" onClick={onLogOutClick} style={{marginBottom: 300}}>
         Log Out
       </span>
 

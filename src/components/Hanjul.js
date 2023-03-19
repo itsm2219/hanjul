@@ -158,7 +158,7 @@ const Hanjul = ({ hanjulObj, isOwner, currentUserId, timestamp, route}) => {
                         </CheckBox> 
                         
                         <br/>
-                        <Moment format="YYYY/MM/DD HH:mm 작성">{hanjulObj.createdAt}</Moment>
+                        <Moment format="YYYY/MM/DD HH:mm">{hanjulObj.createdAt}</Moment>
                         
                         
 

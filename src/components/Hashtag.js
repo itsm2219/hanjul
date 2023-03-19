@@ -131,7 +131,7 @@ const Hashtag = ({
   };
 
   return (
-    <Container>
+    <Container style={{marginBottom: 400, marginLeft: 30}}>
       <Span>#대상을 고르시오</Span>
       <CheckBoxContainer>
         {HASHTAGS1.map(([tag, id]) => (

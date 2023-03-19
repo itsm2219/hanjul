@@ -30,7 +30,7 @@ const Auth = () => {
         <div className="authContainer">
         <FontAwesomeIcon
           icon={faPencil}
-          color={"#00ff66"}
+          color={"#ff9d00"}
           size="3x"
           style={{ marginBottom: 30 }}
         />

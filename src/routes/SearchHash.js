@@ -10,16 +10,18 @@ import { dbService } from 'fBase';
 
 
 const SearchHash = ({ userObj, timestamp }) => {
-  const [hashtags, setHashtags] = useState([]);
+
   const [hashDefault, setHashDefault] = useState(false);
   const [unfilteredLists, setUnfilteredLists] = useState('');
-  const[search, setSearch] = useState("");
-
-  
   const [hashHanjuls, setHashHanjuls] = useState([]);
   const [searching, setSearching] = useState(false);
   const [searchHashtag, setSearchHashtag] = useState('');
   const [hanjulList, setHanjulList] = useState([]);
+
+  const [hanjuls, setHanjuls] = useState([]);
+  const[search, setSearch] = useState("");
+  const [hashtags, setHashtags] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const SearchHash = ({ userObj, timestamp }) => {
     });
   }, []);
 
-
+ 
 
   const filterLists = (reset = false) => {
     if (reset) {
@@ -65,16 +67,17 @@ const SearchHash = ({ userObj, timestamp }) => {
 
 
 
+
   return (
    
 
-<div className="container">
+<div className="container" onClick={handleYearChange}>
 
-    <form onSubmit={(e)=>{filterLists(e)}}>
-          <input className="factoryInput__input" onChange={(e)=>{setSearch(e.target.value)}} placeholder="해시태그를 검색하세요"
-          style={{ marginTop: 10 }} />
+    <form onSubmit={(e)=>{filterLists(e)}} onClick={handleYearChange}>
+
           <button type="submit" >검색</button>
           <Hashtag
+          
     selectedHashtagArray={hashtags}
     setHashtagsArray={setHashtags}
     hashDefault={hashDefault}

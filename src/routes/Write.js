@@ -1,7 +1,7 @@
 import React from 'react';
 import HanjulFactory from 'components/HanjulFactory';
 
-//const Writeend= () => <span>Writeend</span>;
+
 
 const Write = ({ userObj }) => {
 

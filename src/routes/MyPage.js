@@ -87,7 +87,7 @@ const MyPage = ({userObj}) => {
           </ul>
         </nav>
 
-        <div style={{ marginTop: 30 }}>
+        <div style={{ marginTop: 15, marginBottom: 50 }}>
                 {myHanjuls.map((hanjul,{timestamp})=>(
                 <Hanjul key={hanjul.id} hanjulObj={hanjul} isOwner={hanjul.creatorId === userObj.uid} >{timeChanger(timestamp)}</Hanjul>
                 ))}

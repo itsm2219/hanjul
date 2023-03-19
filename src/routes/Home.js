@@ -74,10 +74,10 @@ const Home = ({ userObj }) => {
 
       <form onSubmit={(e)=>{searchHanjul(e)}}>
         <input className="factoryInput__input" onChange={(e)=>{setSearch(e.target.value)}} placeholder="한줄을 검색하세요"
-        style={{ marginTop: 10 }} />
-        <button type="submit" >검색</button>
+        style={{ marginTop: 5 }} />
+        <button type="submit" className="factoryInput__arroww">&rarr;</button>
       </form>
-            <div style={{ marginTop: 30 }}>
+            <div style={{ marginTop: 15, marginBottom: 50 }}>
                 {hanjuls.map((hanjul, {timestamp})=>(
                 <Hanjul 
                 key={hanjul.id} 

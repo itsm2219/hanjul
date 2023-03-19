@@ -16,12 +16,12 @@ const Navigation = ({ userObj }) => {
     return (
         <nav>
             <ul style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
-                <li>
+                <li style={{ display: "flex", justifyContent: "center", marginTop: 90 }}>
                     <Link to="/" style={{ marginRight: 5 }}>
                         <FontAwesomeIcon icon={faHome} color={"#ff9d00"} size="2x" />
                         </Link>
                         </li>
-                        <li>
+                        <li style={{ display: "flex", justifyContent: "center", marginTop: 90 }}>
                             <Link
                             to="/mypage"
                             style={{
@@ -40,12 +40,12 @@ const Navigation = ({ userObj }) => {
                             </span>
                             </Link>
                         </li>
-                        <li>
+                        <li style={{ display: "flex", justifyContent: "center", marginTop: 90 }}>
                             <Link to="/hotpost">
                                 <FontAwesomeIcon icon={faHeart} color={"#ff9d00"} size="2x" />
                             </Link>
                         </li>
-                        <li>
+                        <li style={{ display: "flex", justifyContent: "center", marginTop: 90 }}>
                             <Link to="/searchhash" style={{ marginLeft: 25 }}>
                             <FontAwesomeIcon icon={faSearch} color={"#ff9d00"} size="2x" />
                                 </Link>

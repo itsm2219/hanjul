@@ -2,6 +2,8 @@ import AppRouter from "../components/Router";
 import React, {useEffect, useState} from "react";
 import { authService } from "../fBase";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
+import background from "./android.png";
+
 
 
 function App() {
@@ -23,8 +25,13 @@ function App() {
   }, []);
   return (
     <>
-      {init ? (<AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} /> ) : ("Initialzing....")}
-
+    <div style={{ backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '410px 100%'}} >
+      {init ? (
+        <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} />
+      ) : (
+        "Initialzing...."
+      )}
+      </div>
     </>
   );
 }
