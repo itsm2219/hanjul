@@ -295,3 +295,15 @@ form {
   border-color: white;
   color: white;
 }
+
+.authFont1 {
+  font-size: 22px;
+  color: #ff9d00;
+  font-weight: bolder;
+}
+
+.authFont2 {
+  font-size: 13px;
+  color: gray;
+  font-weight: lighter;
+}

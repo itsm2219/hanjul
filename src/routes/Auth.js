@@ -34,6 +34,9 @@ const Auth = () => {
           size="3x"
           style={{ marginBottom: 30 }}
         />
+        <h4 className="authFont2" style={{ marginBottom: 13 }} >남기고 싶은 글귀 기록하고 맞춤형 글귀 찾기</h4> 
+
+        <h4 className="authFont1" style={{ marginBottom: 60 }} >오늘의 한줄</h4>
             <AuthForm />
             <div className="authBtns">
                 <button onClick={onSocialClick} name="google" className="authBtn">

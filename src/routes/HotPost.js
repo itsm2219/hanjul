@@ -29,7 +29,7 @@ const HotPost = ({ userObj, timestamp }) => {
   }, []);
 
   return (
-    <div style={{ marginTop: 15, marginBottom: 50 }}>
+    <div style={{ marginTop: 15, marginBottom: 70 }}>
       {postings.map((posting, {timestamp}) => (
         <Hanjul
           key={posting.id}

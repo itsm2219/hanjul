@@ -77,7 +77,7 @@ const Home = ({ userObj }) => {
         style={{ marginTop: 5 }} />
         <button type="submit" className="factoryInput__arroww">&rarr;</button>
       </form>
-            <div style={{ marginTop: 15, marginBottom: 50 }}>
+            <div style={{ marginTop: 15, marginBottom: 70 }}>
                 {hanjuls.map((hanjul, {timestamp})=>(
                 <Hanjul 
                 key={hanjul.id} 
