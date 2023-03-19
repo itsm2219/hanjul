@@ -152,6 +152,7 @@ const Hanjul = ({ hanjulObj, isOwner, currentUserId, timestamp, route}) => {
                 ) : (
                     <>
                         <h4 style={{ display: "flex", justifyContent: "center", marginTop: 15 }}>{hanjulObj.text}</h4>
+                        
 
                         <CheckBox name='hashtag' style={{ display: "flex", justifyContent: "center", marginTop: 3 }} >
                         {hanjulObj.hashtags}
@@ -159,7 +160,6 @@ const Hanjul = ({ hanjulObj, isOwner, currentUserId, timestamp, route}) => {
                         
                         <br/>
                         <Moment format="YYYY/MM/DD HH:mm">{hanjulObj.createdAt}</Moment>
-                        
                         
 
                         <div style={{ display: "flex", justifyContent: "right", marginTop: 3 }}>
@@ -172,7 +172,7 @@ const Hanjul = ({ hanjulObj, isOwner, currentUserId, timestamp, route}) => {
                         </div>
                 
                         {isOwner && (
-                            
+            <div>                
             <div className="hanjul__actions">
             <span onClick={onDeleteClick}>
               <FontAwesomeIcon icon={faTrash} />
@@ -180,6 +180,13 @@ const Hanjul = ({ hanjulObj, isOwner, currentUserId, timestamp, route}) => {
             <span onClick={toggleEditing}>
               <FontAwesomeIcon icon={faPencilAlt} />
             </span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "right", marginTop: 3 }}>
+          <button>
+            <FontAwesomeIcon icon={faHeart} color='orange' />
+            &nbsp;{hanjulObj.likeCount}
+            </button>
+            </div>
           </div>
                         )}
                     </>

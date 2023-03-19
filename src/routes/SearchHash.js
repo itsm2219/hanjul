@@ -71,11 +71,12 @@ const SearchHash = ({ userObj, timestamp }) => {
   return (
    
 
-<div className="container" onClick={handleYearChange}>
+<div className="container" >
 
-    <form onSubmit={(e)=>{filterLists(e)}} onClick={handleYearChange}>
+    <form onSubmit={(e)=>{filterLists(e)}} >
 
-          <button type="submit" >검색</button>
+          
+          <button type="submit" className="factoryInput__arroww" >&rarr;</button>
           <Hashtag
           
     selectedHashtagArray={hashtags}
@@ -84,7 +85,7 @@ const SearchHash = ({ userObj, timestamp }) => {
     setHashDefault={setHashDefault} />
     </form>
 
-              <div style={{ marginTop: 310 }}>
+              <div style={{ marginTop: 3, marginBottom: 70 }}>
                   {hashHanjuls.map((hanjul, {timestamp})=>(
                   <Hanjul 
                   key={hanjul.id} 

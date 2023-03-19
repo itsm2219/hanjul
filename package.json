@@ -1,4 +1,5 @@
 {
+  "homepage": "https://itsm2219.github.io/hanjul",
   "name": "hanjul",
   "version": "0.1.0",
   "private": true,
@@ -13,6 +14,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.17.1",
+    "gh-pages": "^5.0.0",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.41",
     "react": "^18.2.0",
@@ -26,7 +28,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
