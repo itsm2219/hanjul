@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/hanjul/static/css/main.11e082cf.css",
+    "main.js": "/hanjul/static/js/main.0fe12590.js",
+    "static/media/android.png": "/hanjul/static/media/android.71f784fd0c9e73fe80e0.png",
+    "index.html": "/hanjul/index.html",
+    "main.11e082cf.css.map": "/hanjul/static/css/main.11e082cf.css.map",
+    "main.0fe12590.js.map": "/hanjul/static/js/main.0fe12590.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.11e082cf.css",
+    "static/js/main.0fe12590.js"
+  ]
+}
