@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/hanjul/static/css/main.fc609646.css",
-    "main.js": "/hanjul/static/js/main.ce9c903c.js",
+    "main.js": "/hanjul/static/js/main.c10ece95.js",
     "static/media/android.png": "/hanjul/static/media/android.71f784fd0c9e73fe80e0.png",
     "index.html": "/hanjul/index.html",
     "main.fc609646.css.map": "/hanjul/static/css/main.fc609646.css.map",
-    "main.ce9c903c.js.map": "/hanjul/static/js/main.ce9c903c.js.map"
+    "main.c10ece95.js.map": "/hanjul/static/js/main.c10ece95.js.map"
   },
   "entrypoints": [
     "static/css/main.fc609646.css",
-    "static/js/main.ce9c903c.js"
+    "static/js/main.c10ece95.js"
   ]
 }
