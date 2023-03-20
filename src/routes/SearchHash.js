@@ -25,7 +25,22 @@ const SearchHash = ({ userObj, timestamp }) => {
       });
   }, []);
   //해당 해시태그에 맞는 한줄을 골라내는 함수
-  const filteredHanjuls = hashHanjuls.filter(hanjul => hanjul.hashtags && hanjul.hashtags.includes(searchHashtag));
+  const filteredHanjuls = hashHanjuls.filter(hanjul => {
+    const hanjulHashtags = hanjul.hashtags;
+    if(hanjulHashtags.length < hashtags.length){
+      return false
+    }
+
+    const matchingHashtags = hanjulHashtags.filter(hashtag => hashtags.includes(hashtag));
+
+    if(matchingHashtags.length === hashtags.length){
+      return true;
+    }
+    if (matchingHashtags.length ==0){
+      return false;
+    }
+    return matchingHashtags.length > 0;
+  });
   const onSubmit = async (event) => {
     event.preventDefault();
     setSearching(true);
@@ -45,7 +60,7 @@ const SearchHash = ({ userObj, timestamp }) => {
     <div className="container">
       <form onSubmit={onSubmit}>
 
-        <button type="submit" onClick={onChangeHashtag} onBlur={onBlur} >검색</button>
+        <button type="submit" style={{ marginLeft: 250 }}className="factoryInput__arroww" onClick={onChangeHashtag} onBlur={onBlur} >&rarr;</button>
       {searching && (
         <div style={{ marginTop: 20 }}>
           {filteredHanjuls.map((hanjul) => (

@@ -167,7 +167,7 @@ const Hanjul = ({ hanjulObj, isOwner, currentUserId, timestamp, route}) => {
                             {!isOwner && <button onClick={() => {handleLike(hanjulObj)}}>{likeStatus.liked ? (
             <FontAwesomeIcon icon={faHeart} color='orange' />
           ) : (
-            <FontAwesomeIcon icon={FaHeartRegular} />
+            <FontAwesomeIcon icon={FaHeartRegular} color='orange' />
           )} {likeStatus.likeCount}</button>}
                         </div>
                 
@@ -183,7 +183,7 @@ const Hanjul = ({ hanjulObj, isOwner, currentUserId, timestamp, route}) => {
           </div>
           <div style={{ display: "flex", justifyContent: "right", marginTop: 3 }}>
           <button>
-            <FontAwesomeIcon icon={faHeart} color='orange' />
+            <FontAwesomeIcon icon={FaHeartRegular} />
             &nbsp;{hanjulObj.likeCount}
             </button>
             </div>
