@@ -113,27 +113,8 @@ const Hanjul = ({ hanjulObj, isOwner, currentUserId, timestamp, route}) => {
         }
     };
       
-    const timeChanger = (time) => {
-        const dateObj = new Date(time);
-        let dateStr = `${dateObj.getFullYear()}년 ${
-          dateObj.getMonth() + 1
-        }월 ${dateObj.getDate()}일 작성`;
-    
-        return dateStr;
-      };
-      const displayCreatedAt = (createdAt) => {
-        let startTime = new Date(createdAt);
-        let nowTime = Date.now();
-        if (parseInt(startTime - nowTime) > -60000) {
-          return <p format="방금 전">{startTime}</p>;
-        }
-        if (parseInt(startTime - nowTime) < -86400000) {
-          return <p format="MMM D일">{startTime}</p>;
-        }
-        if (parseInt(startTime - nowTime) > -86400000) {
-          return <p fromNow>{startTime}</p>;
-        }
-      };
+
+
 
     return (
         <div className="hanjul">

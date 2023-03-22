@@ -51,14 +51,7 @@ const Home = ({ userObj }) => {
     
       const filteredHanjuls = hanjuls.filter(hanjul => hanjul.hashtags && hanjul.hashtags.includes(searchTerm));
 
-      const timeChanger = (time) => {
-        const dateObj = new Date(time);
-        let dateStr = `${dateObj.getFullYear()}년 ${
-          dateObj.getMonth() + 1
-        }월 ${dateObj.getDate()}일 작성`;
-    
-        return dateStr;
-      };
+
 
       return (
         <div className="container"> 

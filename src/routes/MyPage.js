@@ -63,15 +63,6 @@ const MyPage = ({userObj}) => {
         }
     };
 
-    const timeChanger = (time) => {
-      const dateObj = new Date(time);
-      let dateStr = `${dateObj.getFullYear()}년 ${
-        dateObj.getMonth() + 1
-      }월 ${dateObj.getDate()}일 작성`;
-  
-      return dateStr;
-    };
-
  
 
      return (
@@ -89,7 +80,7 @@ const MyPage = ({userObj}) => {
 
         <div style={{ marginTop: 15, marginBottom: 50 }}>
                 {myHanjuls.map((hanjul,{timestamp})=>(
-                <Hanjul key={hanjul.id} hanjulObj={hanjul} isOwner={hanjul.creatorId === userObj.uid} >{timeChanger(timestamp)}</Hanjul>
+                <Hanjul key={hanjul.id} hanjulObj={hanjul} isOwner={hanjul.creatorId === userObj.uid} />
                 ))}
             </div>
         </div>

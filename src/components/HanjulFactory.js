@@ -24,7 +24,7 @@ const HanjulFactory = ({  hashtag, timestamp,filterLists, userObj }) => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-   // const hashtags =hanjul.split(" ").filter(word => word.startsWith('#'));
+
 
 
     if (hanjul === "") {
@@ -66,7 +66,7 @@ const onSearch = (event) => {
   setSearchTerm(event.target.value);
 }
 
-//const filteredHanjuls = hanjuls.filter(hanjul => hanjul.hashtags && hanjul.hashtags.includes(searchTerm));
+
 
 
   return (
